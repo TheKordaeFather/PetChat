@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F55EC1AF29A900450095B234 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1AE29A900450095B234 /* AppDelegate.swift */; };
+		F55EC1B129A900450095B234 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1B029A900450095B234 /* SceneDelegate.swift */; };
+		F55EC1B629A900450095B234 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55EC1B429A900450095B234 /* Main.storyboard */; };
+		F55EC1B829A9004A0095B234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55EC1B729A9004A0095B234 /* Assets.xcassets */; };
+		F55EC1BB29A9004A0095B234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55EC1B929A9004A0095B234 /* LaunchScreen.storyboard */; };
+		F55EC1C629A900EA0095B234 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C529A900EA0095B234 /* AuthVC.swift */; };
+		F55EC1C829A901200095B234 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C729A901200095B234 /* ForgotPasswordVC.swift */; };
+		F55EC1CA29A901430095B234 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C929A901430095B234 /* MainVC.swift */; };
+		F55EC1CF29A903BC0095B234 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1CE29A903BC0095B234 /* HeaderView.swift */; };
+		F5720A0A29A9FDCF002001C5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5720A0929A9FDCF002001C5 /* CustomButton.swift */; };
+		F5C6EA7229A94D4400BED6DB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C6EA7129A94D4400BED6DB /* CustomTextField.swift */; };
+		F5F2D36629AB5EE100F9D7DE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2D36529AB5EE100F9D7DE /* SignUpVC.swift */; };
+		F5F2D36829AB5FA300F9D7DE /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2D36729AB5FA300F9D7DE /* SignInVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F55EC1AB29A900450095B234 /* PetProjectChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProjectChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F55EC1AE29A900450095B234 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F55EC1B029A900450095B234 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F55EC1B529A900450095B234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F55EC1B729A9004A0095B234 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F55EC1BA29A9004A0095B234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F55EC1BC29A9004A0095B234 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F55EC1C529A900EA0095B234 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		F55EC1C729A901200095B234 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		F55EC1C929A901430095B234 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		F55EC1CE29A903BC0095B234 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		F5720A0929A9FDCF002001C5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		F5C6EA7129A94D4400BED6DB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		F5F2D36529AB5EE100F9D7DE /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		F5F2D36729AB5FA300F9D7DE /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F55EC1A829A900450095B234 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F55EC1A229A900450095B234 = {
+			isa = PBXGroup;
+			children = (
+				F55EC1AD29A900450095B234 /* PetProjectChat */,
+				F55EC1AC29A900450095B234 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F55EC1AC29A900450095B234 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F55EC1AB29A900450095B234 /* PetProjectChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F55EC1AD29A900450095B234 /* PetProjectChat */ = {
+			isa = PBXGroup;
+			children = (
+				F55EC1CD29A903590095B234 /* CustomViews */,
+				F55EC1C229A900780095B234 /* Controllers */,
+				F55EC1AE29A900450095B234 /* AppDelegate.swift */,
+				F55EC1B029A900450095B234 /* SceneDelegate.swift */,
+				F55EC1B429A900450095B234 /* Main.storyboard */,
+				F55EC1B729A9004A0095B234 /* Assets.xcassets */,
+				F55EC1B929A9004A0095B234 /* LaunchScreen.storyboard */,
+				F55EC1BC29A9004A0095B234 /* Info.plist */,
+			);
+			path = PetProjectChat;
+			sourceTree = "<group>";
+		};
+		F55EC1C229A900780095B234 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5F2D36929AB900100F9D7DE /* AuthControllers */,
+				F55EC1C929A901430095B234 /* MainVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F55EC1CD29A903590095B234 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				F55EC1CE29A903BC0095B234 /* HeaderView.swift */,
+				F5C6EA7129A94D4400BED6DB /* CustomTextField.swift */,
+				F5720A0929A9FDCF002001C5 /* CustomButton.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		F5F2D36929AB900100F9D7DE /* AuthControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F55EC1C529A900EA0095B234 /* AuthVC.swift */,
+				F5F2D36529AB5EE100F9D7DE /* SignUpVC.swift */,
+				F5F2D36729AB5FA300F9D7DE /* SignInVC.swift */,
+				F55EC1C729A901200095B234 /* ForgotPasswordVC.swift */,
+			);
+			path = AuthControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F55EC1AA29A900450095B234 /* PetProjectChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F55EC1BF29A9004A0095B234 /* Build configuration list for PBXNativeTarget "PetProjectChat" */;
+			buildPhases = (
+				F55EC1A729A900450095B234 /* Sources */,
+				F55EC1A829A900450095B234 /* Frameworks */,
+				F55EC1A929A900450095B234 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PetProjectChat;
+			productName = PetProjectChat;
+			productReference = F55EC1AB29A900450095B234 /* PetProjectChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F55EC1A329A900450095B234 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					F55EC1AA29A900450095B234 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = F55EC1A629A900450095B234 /* Build configuration list for PBXProject "PetProjectChat" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F55EC1A229A900450095B234;
+			productRefGroup = F55EC1AC29A900450095B234 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F55EC1AA29A900450095B234 /* PetProjectChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F55EC1A929A900450095B234 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F55EC1BB29A9004A0095B234 /* LaunchScreen.storyboard in Resources */,
+				F55EC1B829A9004A0095B234 /* Assets.xcassets in Resources */,
+				F55EC1B629A900450095B234 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F55EC1A729A900450095B234 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F55EC1C829A901200095B234 /* ForgotPasswordVC.swift in Sources */,
+				F55EC1C629A900EA0095B234 /* AuthVC.swift in Sources */,
+				F5720A0A29A9FDCF002001C5 /* CustomButton.swift in Sources */,
+				F55EC1AF29A900450095B234 /* AppDelegate.swift in Sources */,
+				F5C6EA7229A94D4400BED6DB /* CustomTextField.swift in Sources */,
+				F5F2D36829AB5FA300F9D7DE /* SignInVC.swift in Sources */,
+				F55EC1B129A900450095B234 /* SceneDelegate.swift in Sources */,
+				F55EC1CA29A901430095B234 /* MainVC.swift in Sources */,
+				F55EC1CF29A903BC0095B234 /* HeaderView.swift in Sources */,
+				F5F2D36629AB5EE100F9D7DE /* SignUpVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F55EC1B429A900450095B234 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F55EC1B529A900450095B234 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F55EC1B929A9004A0095B234 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F55EC1BA29A9004A0095B234 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F55EC1BD29A9004A0095B234 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F55EC1BE29A9004A0095B234 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F55EC1C029A9004A0095B234 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PetProjectChat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qwe.PetProjectChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F55EC1C129A9004A0095B234 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PetProjectChat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = qwe.PetProjectChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F55EC1A629A900450095B234 /* Build configuration list for PBXProject "PetProjectChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F55EC1BD29A9004A0095B234 /* Debug */,
+				F55EC1BE29A9004A0095B234 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F55EC1BF29A9004A0095B234 /* Build configuration list for PBXNativeTarget "PetProjectChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F55EC1C029A9004A0095B234 /* Debug */,
+				F55EC1C129A9004A0095B234 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F55EC1A329A900450095B234 /* Project object */;
+}
