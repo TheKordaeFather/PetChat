@@ -89,7 +89,6 @@ class AuthVC: UIViewController {
             adminButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             adminButton.heightAnchor.constraint(equalToConstant: 55),
         
-            
             orLabel.topAnchor.constraint(equalTo: adminButton.bottomAnchor, constant: 20),
             orLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, multiplier: 0.9),
             orLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
