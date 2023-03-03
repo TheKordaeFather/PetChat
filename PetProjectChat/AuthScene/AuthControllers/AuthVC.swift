@@ -117,6 +117,7 @@ class AuthVC: UIViewController {
 
     @objc func didTapAdminButton() {
         let vc = MainVC()
+        
         navigationController?.viewControllers[0] = vc
         navigationController?.popToRootViewController(animated: true)
     }
