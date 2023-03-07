@@ -8,7 +8,10 @@
 import UIKit
 
 class SignInVC: UIViewController {
-
+    var endEditingTap:UITapGestureRecognizer?
+    let authService = AuthService.shared
+    var checkField = CheckField.shared
+    
     let headerView:HeaderView = {
        let view = HeaderView()
         view.layer.cornerRadius = 12
@@ -32,10 +35,63 @@ class SignInVC: UIViewController {
         
         loginOrEmailLabel.text = "email or nickname"
         loginOrEmailLabel.numberOfLines = 2
-        
         passwordLabel.text = "password"
         
+        endEditingTap = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        view.addGestureRecognizer(endEditingTap!)
     }
+    
+    @objc func endEditing(){
+        view.endEditing(true)
+    }
+    
+    @objc func didTapSignInButton(){
+        unionValid()
+        let email = loginTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let signInEntity = SignInEntity(email: email, password: password)
+        
+        authService.signIn(signInEntity) { response in
+            switch response {
+            case .success:
+                
+                print("sign in ok")
+                
+            case .error:
+                //сделать функцию
+                let alert = UIAlertController(title: "error", message: "with registration", preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "ok", style: .default) {_ in
+                    
+                }
+                alert.addAction(okButton)
+                self.present(alert, animated: true)
+            case .noVerify:
+                let alert = UIAlertController(title: "error", message: "please verify email", preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "ok", style: .default)
+                
+                alert.addAction(okButton)
+                self.present(alert, animated: true)
+            }
+        }
+        
+        
+    }
+    
+    func unionValid(){
+        guard checkField.validField(view, loginTextField) else {
+            print("login is shit")
+            return
+        }
+        print("login is correct")
+                
+        
+        guard checkField.validField(view, passwordTextField) else {
+            print("password is shit")
+            return
+        }
+        print("password is correct")
+    }
+
        
 
     private func setupUI() {
@@ -88,9 +144,5 @@ class SignInVC: UIViewController {
         ])
     }
     
-    @objc func didTapSignInButton(){
-        
-        
-    }
-
+    
 }

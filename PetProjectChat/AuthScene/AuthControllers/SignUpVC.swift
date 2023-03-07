@@ -8,6 +8,13 @@
 import UIKit
 
 class SignUpVC: UIViewController {
+    
+    var endEditingTap:UITapGestureRecognizer?//скрыть клавиатуру п онажатию
+    var checkField = CheckField.shared
+    var authService = AuthService.shared
+    
+    
+    
     let headerView:HeaderView = {
        let view = HeaderView()
         view.layer.cornerRadius = 12
@@ -25,6 +32,67 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         
+        acceptButton.addTarget(self, action: #selector(acceptButtonDidTapped), for: .touchUpInside)
+        
+        endEditingTap = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        view.addGestureRecognizer(endEditingTap!)
+        
+        
+    }
+    
+    @objc func endEditing(){
+        view.endEditing(true)
+    }
+    
+    @objc func acceptButtonDidTapped(){
+        
+        unionValid()
+        
+        let login = loginTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        let signUpUserEntity = SignUpEntity(login: login, email: email, password: password)
+        authService.createNewUser(signUpUserEntity) { [weak self] code in
+            switch code.code {
+            case 0:
+                print("ошибка регистрации")
+            case 1:
+                print("успешно зарегистрировались")
+                let alert = UIAlertController(title: "congrats", message: "with registration", preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "ok", style: .default) {_ in
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(okButton)
+                self?.present(alert, animated: true)
+                self?.authService.confirmEmail()
+            default :
+                print("неизвестно что произошло")
+            }
+        }
+    }
+    
+    
+    
+    
+    func unionValid(){
+        guard checkField.validField(view, loginTextField) else {
+            print("login is shit")
+            return
+        }
+        print("login is correct")
+        
+        guard checkField.validField(view, emailTextField) else {
+            print("email is shit")
+            return
+        }
+        print("email is correct")
+        
+        guard checkField.validField(view, passwordTextField) else {
+            print("password is shit")
+            return
+        }
+        print("password is correct")
     }
        
 

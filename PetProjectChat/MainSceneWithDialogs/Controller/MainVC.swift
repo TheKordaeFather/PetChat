@@ -8,14 +8,24 @@
 import UIKit
 
 class MainVC: UIViewController {
-
     private let cellIdentifire = "cellID"
     // MARK: all images
     let searchBar = UISearchBar()
     
     
+    
     let userStorage = UserStorage()
+    
+    
+    
     var searchStorage:[UserProtocol] = []
+    
+    private let friendsDialogsSegmentControl:UISegmentedControl = {
+        let items = ["dialogs", "friend"]
+        let sc = UISegmentedControl(items: items)
+        sc.selectedSegmentIndex = 0
+        return sc
+    }()
     
     private let dialogsTableView:UITableView = {
         let tv = UITableView()
@@ -40,7 +50,8 @@ class MainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        view.backgroundColor = .systemBackground
+        
         dialogsTableView.delegate = self
         dialogsTableView.dataSource = self
         searchBar.delegate = self
@@ -55,24 +66,32 @@ class MainVC: UIViewController {
         
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(searchDidTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchDidTap))
 //        как по-человечески сделать системную кнопку в баре
         
     }
     
-    @objc func searchDidTap() {
-        print("right item button")
+    @objc func buttonDidTap() {
+        let vc = DialogViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupUI(){
-        
+        view.addSubview(friendsDialogsSegmentControl)
         view.addSubview(dialogsTableView)
+        friendsDialogsSegmentControl.translatesAutoresizingMaskIntoConstraints = false
         dialogsTableView.translatesAutoresizingMaskIntoConstraints = false
         
+        
         NSLayoutConstraint.activate([
-            dialogsTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            friendsDialogsSegmentControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+            friendsDialogsSegmentControl.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: friendsDialogsSegmentControl.trailingAnchor, multiplier: 4),
+            
+            
+            dialogsTableView.topAnchor.constraint(equalTo: friendsDialogsSegmentControl.bottomAnchor, constant: 10),
             dialogsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dialogsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dialogsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -141,7 +160,18 @@ extension MainVC:UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("did select row")
+        
+        let vc = DialogViewController()
+        print(searchStorage.count)
+        if searchStorage.count > 0 {
+            vc.user = searchStorage[indexPath.row]
+        } else {
+            vc.user = userStorage.list[indexPath.row]
+        }
+        
+        
+    
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

@@ -9,10 +9,10 @@ import UIKit
 
 class CustomTextField: UITextField {
                 
-    enum TextFieldType {
-        case email
-        case login
-        case password
+    enum TextFieldType:String {
+        case email = "email"
+        case login = "login"
+        case password = "password"
     }
     
     var textFieldType:TextFieldType
@@ -23,11 +23,13 @@ class CustomTextField: UITextField {
         
         self.backgroundColor = .secondarySystemBackground
         self.layer.cornerRadius = 10
-//        self.returnKeyType = .done
-//        self.autocorrectionType = .no
-//        self.autocapitalizationType = .none
+        self.returnKeyType = .done
         
-//        self.leftViewMode = .always
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
+        
+        self.leftViewMode = .always
+        
 //        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.frame.size.height))
         
         switch type {
@@ -38,8 +40,8 @@ class CustomTextField: UITextField {
             self.placeholder = "login"
         case .password:
             self.placeholder = "password"
-            self.isSecureTextEntry = true
-            //self.textContentType = .password ??
+//            self.isSecureTextEntry = true
+//            self.textContentType = .password
         }
         
         
