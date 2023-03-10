@@ -9,33 +9,13 @@ import UIKit
 
 class MainVC: UIViewController {
     private let cellIdentifire = "cellID"
+    let userStorage = UserStorage()
+    var searchStorage:[UserProtocol] = []
     // MARK: all images
+    
     let searchBar = UISearchBar()
     
-    
-    
-    let userStorage = UserStorage()
-    
-    
-    
-    var searchStorage:[UserProtocol] = []
-    
-    private let friendsDialogsSegmentControl:UISegmentedControl = {
-        let items = ["dialogs", "friend"]
-        let sc = UISegmentedControl(items: items)
-        sc.selectedSegmentIndex = 0
-        return sc
-    }()
-    
-    private let dialogsTableView:UITableView = {
-        let tv = UITableView()
-        tv.allowsSelection = true
-        tv.backgroundColor = .systemBackground
-//        tv.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-        tv.register(ExtendedTableViewCell.self, forCellReuseIdentifier: ExtendedTableViewCell.cellIdentifier)
-        return tv
-    }()
-    
+    //аватарка с картинкой своего профиля
     let button:UIButton = {
         let b = UIButton()
         b.setTitle("", for: .normal)
@@ -47,7 +27,33 @@ class MainVC: UIViewController {
         b.heightAnchor.constraint(equalToConstant: 44).isActive = true
         return b
     }()
-
+    
+    //переключатель на диалоги и друзей
+    private let friendsDialogsSegmentControl:UISegmentedControl = {
+        let items = ["dialogs", "friend"]
+        let sc = UISegmentedControl(items: items)
+        //sc.addTarget(self, action: #selector(changeTableView), for: .valueChanged)
+        //если оставть addTarget тут то он не будет работать если я нажму searchbar
+        sc.selectedSegmentIndex = 0
+        return sc
+    }()
+    
+    //обертка для группировки friendsDialogsSegmentControl и dialogsTableView
+    var backgroundView:UIView! //tableViewAndSegmentControlWrapper
+    
+    private let dialogsTableView:UITableView = {
+        let tv = UITableView()
+        tv.allowsSelection = true
+        tv.backgroundColor = .systemBackground
+        tv.register(ExtendedTableViewCell.self, forCellReuseIdentifier: ExtendedTableViewCell.cellIdentifier)
+        return tv
+    }()
+    
+   
+    override func viewDidAppear(_ animated: Bool) {
+        friendsDialogsSegmentControl.selectedSegmentIndex = 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -55,48 +61,84 @@ class MainVC: UIViewController {
         dialogsTableView.delegate = self
         dialogsTableView.dataSource = self
         searchBar.delegate = self
+        
         setupUI()
-        configureNavigationBar()
-        
     }
     
-    func configureNavigationBar(){
-//        searchBar.sizeToFit()
-//        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationItem.titleView = searchBar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchDidTap))
-//        как по-человечески сделать системную кнопку в баре
-        
-    }
-    
+    //переход на свой профиль
     @objc func buttonDidTap() {
         let vc = DialogViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    //переход на список друзей
+    @objc func changeTableView(){
+        print("changed")
+        if friendsDialogsSegmentControl.selectedSegmentIndex == 1 {
+            print("huihuihuhi")
+            let vc = FriendsListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
+    
+    
     func setupUI(){
-        view.addSubview(friendsDialogsSegmentControl)
-        view.addSubview(dialogsTableView)
+        configureNavigationBar()
+        configureBackgroundView()
+        
+        view.addSubview(backgroundView)
+                
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+                                        
+        NSLayoutConstraint.activate([
+                       
+            backgroundView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+    }
+    
+    func configureNavigationBar(){
+
+        navigationItem.titleView = searchBar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchDidTap))
+//        searchBar.sizeToFit()
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//        как по-человечески сделать системную кнопку в баре
+        
+    }
+    
+    func configureBackgroundView(){
+        friendsDialogsSegmentControl.addTarget(self, action: #selector(changeTableView), for: .valueChanged)
+        
+        backgroundView = UIView()
+        backgroundView.backgroundColor = .systemCyan
+        
+        backgroundView.addSubview(friendsDialogsSegmentControl)
+        backgroundView.addSubview(dialogsTableView)
         friendsDialogsSegmentControl.translatesAutoresizingMaskIntoConstraints = false
         dialogsTableView.translatesAutoresizingMaskIntoConstraints = false
         
-        
         NSLayoutConstraint.activate([
-            friendsDialogsSegmentControl.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
-            friendsDialogsSegmentControl.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: friendsDialogsSegmentControl.trailingAnchor, multiplier: 4),
+            friendsDialogsSegmentControl.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
+            friendsDialogsSegmentControl.leadingAnchor.constraint(equalToSystemSpacingAfter: backgroundView.leadingAnchor, multiplier: 4),
+            backgroundView.trailingAnchor.constraint(equalToSystemSpacingAfter: friendsDialogsSegmentControl.trailingAnchor, multiplier: 4),
             
             
             dialogsTableView.topAnchor.constraint(equalTo: friendsDialogsSegmentControl.bottomAnchor, constant: 10),
-            dialogsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dialogsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dialogsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            dialogsTableView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+            dialogsTableView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
+            dialogsTableView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             ])
+        
     }
+    
+    
     
 }
 
@@ -162,7 +204,6 @@ extension MainVC:UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let vc = DialogViewController()
-        print(searchStorage.count)
         if searchStorage.count > 0 {
             vc.user = searchStorage[indexPath.row]
         } else {

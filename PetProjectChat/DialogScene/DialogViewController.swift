@@ -18,13 +18,13 @@ class DialogViewController: UIViewController {
         
         view.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         
-        temp()
+        setupWrapper()
                
     }
     
     var user:UserProtocol? = User(name: "Monkey D", userpic: UIImage(named: "monkey")!, lastMessage: "хочу жрать", lastMessageDate: "03.03.2023")
     
-    func temp(){
+    func setupWrapper(){
         let myView = UIView()
         myView.backgroundColor = .systemBackground
         myView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,47 +38,18 @@ class DialogViewController: UIViewController {
             ])
     }
     
-    func createCustomButton(imageName:String, selector:Selector) -> UIBarButtonItem {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: imageName)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .systemBlue
-        button.imageView?.contentMode = .scaleAspectFit
-        button.contentVerticalAlignment = .fill
-        button.contentVerticalAlignment = .fill
-        button.addTarget(self, action: selector, for: .touchUpInside)
-        
-        let menuBarItem = UIBarButtonItem(customView: button)
-        return menuBarItem
-        
-        
-    }
-    
     
     private func setupNavigationBar(){
         let name = user?.name
         let descr = user?.lastMessage
         let pic = user?.userpic
         
-        
-        let audioRightButton = createCustomButton(imageName: "phone", selector: #selector(didTapAudioRightButton))
-        let videoRightButton = createCustomButton(imageName: "video", selector: #selector(didTapVideoRightButton))
         let customTitleView = CustomisedNavigationTitleView(userName: name!, userDescription: descr!, userpic:pic!)
         
-//        navigationItem.rightBarButtonItems = [audioRightButton, videoRightButton]
         navigationItem.titleView = customTitleView
         
     }
     
-    @objc private func didTapAudioRightButton() {
-        print("aidop button")
-    }
-    
-    @objc private func didTapVideoRightButton() {
-        print("aidop button")
-    }
-    
-    
-
 }
 
 
