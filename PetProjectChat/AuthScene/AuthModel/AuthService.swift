@@ -68,5 +68,64 @@ class AuthService {
         }
     }
     
+    func getAllUsers(completion: @escaping ([String]) -> ()){
+        Firestore.firestore().collection("users").getDocuments { snap, err in
+            
+            guard err == nil else {
+                return
+            }
+            
+            //все id пользователей
+            guard let docs = snap?.documents else {
+                return
+            }
+            //нужно создать какой нибудь адекватный класс где будут хранить эту имя возраст картинку и тд
+            
+            var tempList:[String] = []
+            for doc in docs {
+                let data = doc.data()
+                let email = data["email"] as! String
+                
+                tempList.append(email)
+            }
+            completion(tempList)
+            
+        }
+    }
     
+    //MARK: -- Messenger
+    func sendMessage(otherSideId:String?, conversationId:String?, message: Message, text:String, completion: @escaping (Bool) -> () ){
+        if conversationId == nil {
+            //создаем новую переписку
+        } else {
+            let msg:[String:Any] = [
+                "date":Date(),
+                "sender_id":message.sender.senderId,
+                "text":text
+            ]
+            Firestore.firestore().collection("conversations").document(conversationId!).collection("messages").addDocument(data:  msg) { err in
+                if err == nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    
+    func updateConversation(){
+        
+    }
+    
+    func getConversationId(){
+        
+    }
+    
+    func getAllMessages(){
+        
+    }
+    
+    func getOneMessage(){
+        
+    }
 }

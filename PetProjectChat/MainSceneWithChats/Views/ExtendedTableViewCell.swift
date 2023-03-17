@@ -38,7 +38,7 @@ class ExtendedTableViewCell: UITableViewCell {
     
     func configure(user:UserProtocol){
         userpicImageView.image = user.userpic
-        userLastMessageView.nameAndLastnameLabel.text = user.name
+        userLastMessageView.nameAndLastnameLabel.text = user.email
         userLastMessageView.lastMessageLabel.text = user.lastMessage
         userLastMessageView.dateLabel.text = user.lastMessageDate
         

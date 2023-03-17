@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class ChatsViewController: UIViewController {
     private let cellIdentifire = "cellID"
-    let userStorage = UserStorage()
+    public var userStorage = UserStorage()
     var searchStorage:[UserProtocol] = []
     // MARK: all images
     
@@ -67,16 +67,17 @@ class MainVC: UIViewController {
     
     //переход на свой профиль
     @objc func buttonDidTap() {
-        let vc = DialogViewController()
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = CertainChatViewController()
+//        navigationController?.pushViewController(vc, animated: true)
+        self.dialogsTableView.reloadData()
+        
     }
     
     //переход на список друзей
-    @objc func changeTableView(){
-        print("changed")
+    @objc func changeTableView(){        
         if friendsDialogsSegmentControl.selectedSegmentIndex == 1 {
-            print("huihuihuhi")
             let vc = FriendsListViewController()
+            vc.userStorage = self.userStorage
             navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -142,7 +143,7 @@ class MainVC: UIViewController {
     
 }
 
-extension MainVC:UISearchBarDelegate {
+extension ChatsViewController:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchStorage.removeAll()
         
@@ -165,7 +166,7 @@ extension MainVC:UISearchBarDelegate {
     }
 }
 
-extension MainVC:UITableViewDataSource, UITableViewDelegate {
+extension ChatsViewController:UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -203,7 +204,7 @@ extension MainVC:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = DialogViewController()
+        let vc = CertainChatViewController()
         if searchStorage.count > 0 {
             vc.user = searchStorage[indexPath.row]
         } else {
@@ -211,6 +212,7 @@ extension MainVC:UITableViewDataSource, UITableViewDelegate {
         }
         
         
+        vc.otherSideId = vc.user?.id
     
         navigationController?.pushViewController(vc, animated: true)
     }

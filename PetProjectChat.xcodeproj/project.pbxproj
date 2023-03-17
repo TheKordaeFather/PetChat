@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68D8E23547FD167B7D03F8D7 /* Pods_PetProjectChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CAB5BF566B16CC230765B3B /* Pods_PetProjectChat.framework */; };
+		F51228BE29C099A30067A7C8 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51228BD29C099A30067A7C8 /* ChatService.swift */; };
 		F51A9F5F29AFDDA000DE65D0 /* ExtendedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A9F5E29AFDDA000DE65D0 /* ExtendedTableViewCell.swift */; };
 		F51A9F6129AFE62300DE65D0 /* UserLastMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A9F6029AFE62300DE65D0 /* UserLastMessageView.swift */; };
 		F52D7C0C29B79C9900D84C44 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52D7C0B29B79C9900D84C44 /* FriendsListViewController.swift */; };
@@ -23,10 +24,10 @@
 		F55EC1BB29A9004A0095B234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55EC1B929A9004A0095B234 /* LaunchScreen.storyboard */; };
 		F55EC1C629A900EA0095B234 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C529A900EA0095B234 /* AuthVC.swift */; };
 		F55EC1C829A901200095B234 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C729A901200095B234 /* ForgotPasswordVC.swift */; };
-		F55EC1CA29A901430095B234 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C929A901430095B234 /* MainVC.swift */; };
+		F55EC1CA29A901430095B234 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1C929A901430095B234 /* ChatsViewController.swift */; };
 		F55EC1CF29A903BC0095B234 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55EC1CE29A903BC0095B234 /* HeaderView.swift */; };
 		F5720A0A29A9FDCF002001C5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5720A0929A9FDCF002001C5 /* CustomButton.swift */; };
-		F59E2BAF29B23FBF00BE4C2E /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E2BAE29B23FBF00BE4C2E /* DialogViewController.swift */; };
+		F59E2BAF29B23FBF00BE4C2E /* CertainChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E2BAE29B23FBF00BE4C2E /* CertainChatViewController.swift */; };
 		F59E2BB129B240E500BE4C2E /* CustomisedNavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E2BB029B240E500BE4C2E /* CustomisedNavigationTitleView.swift */; };
 		F59E2BB329B252C800BE4C2E /* UserDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E2BB229B252C800BE4C2E /* UserDelegateProtocol.swift */; };
 		F5BF825829B0A5E200EE26A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BF825729B0A5E200EE26A3 /* User.swift */; };
@@ -41,6 +42,7 @@
 		03675A1A708A9E47AEAB8532 /* Pods-PetProjectChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProjectChat.release.xcconfig"; path = "Target Support Files/Pods-PetProjectChat/Pods-PetProjectChat.release.xcconfig"; sourceTree = "<group>"; };
 		0CAB5BF566B16CC230765B3B /* Pods_PetProjectChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProjectChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		194DBED25EE16AE1AC6F8FB3 /* Pods-PetProjectChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProjectChat.debug.xcconfig"; path = "Target Support Files/Pods-PetProjectChat/Pods-PetProjectChat.debug.xcconfig"; sourceTree = "<group>"; };
+		F51228BD29C099A30067A7C8 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		F51A9F5E29AFDDA000DE65D0 /* ExtendedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedTableViewCell.swift; sourceTree = "<group>"; };
 		F51A9F6029AFE62300DE65D0 /* UserLastMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLastMessageView.swift; sourceTree = "<group>"; };
 		F52D7C0B29B79C9900D84C44 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
@@ -58,10 +60,10 @@
 		F55EC1BC29A9004A0095B234 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F55EC1C529A900EA0095B234 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		F55EC1C729A901200095B234 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
-		F55EC1C929A901430095B234 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		F55EC1C929A901430095B234 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		F55EC1CE29A903BC0095B234 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F5720A0929A9FDCF002001C5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		F59E2BAE29B23FBF00BE4C2E /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
+		F59E2BAE29B23FBF00BE4C2E /* CertainChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertainChatViewController.swift; sourceTree = "<group>"; };
 		F59E2BB029B240E500BE4C2E /* CustomisedNavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisedNavigationTitleView.swift; sourceTree = "<group>"; };
 		F59E2BB229B252C800BE4C2E /* UserDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDelegateProtocol.swift; sourceTree = "<group>"; };
 		F5BF825729B0A5E200EE26A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -149,7 +151,7 @@
 				F55EC1C229A900780095B234 /* AuthScene */,
 				F55EC1BC29A9004A0095B234 /* Info.plist */,
 				F52F52FF29B5C4970077D92A /* GoogleService-Info.plist */,
-				F59E2BA929B2289C00BE4C2E /* MainSceneWithDialogs */,
+				F59E2BA929B2289C00BE4C2E /* MainSceneWithChats */,
 				F52D7C0B29B79C9900D84C44 /* FriendsListViewController.swift */,
 				F5395F9929BB351600496FED /* TempTableViewCell.swift */,
 			);
@@ -176,20 +178,20 @@
 			path = AuthViews;
 			sourceTree = "<group>";
 		};
-		F59E2BA929B2289C00BE4C2E /* MainSceneWithDialogs */ = {
+		F59E2BA929B2289C00BE4C2E /* MainSceneWithChats */ = {
 			isa = PBXGroup;
 			children = (
 				F59E2BAC29B2298300BE4C2E /* Views */,
 				F59E2BAB29B2295E00BE4C2E /* Model */,
 				F59E2BAA29B2294300BE4C2E /* Controller */,
 			);
-			path = MainSceneWithDialogs;
+			path = MainSceneWithChats;
 			sourceTree = "<group>";
 		};
 		F59E2BAA29B2294300BE4C2E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F55EC1C929A901430095B234 /* MainVC.swift */,
+				F55EC1C929A901430095B234 /* ChatsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,9 +218,10 @@
 		F59E2BAD29B23F8A00BE4C2E /* DialogScene */ = {
 			isa = PBXGroup;
 			children = (
-				F59E2BAE29B23FBF00BE4C2E /* DialogViewController.swift */,
+				F59E2BAE29B23FBF00BE4C2E /* CertainChatViewController.swift */,
 				F59E2BB029B240E500BE4C2E /* CustomisedNavigationTitleView.swift */,
 				F59E2BB229B252C800BE4C2E /* UserDelegateProtocol.swift */,
+				F51228BD29C099A30067A7C8 /* ChatService.swift */,
 			);
 			path = DialogScene;
 			sourceTree = "<group>";
@@ -355,8 +358,9 @@
 				F5395F9A29BB351700496FED /* TempTableViewCell.swift in Sources */,
 				F55EC1C629A900EA0095B234 /* AuthVC.swift in Sources */,
 				F59E2BB129B240E500BE4C2E /* CustomisedNavigationTitleView.swift in Sources */,
+				F51228BE29C099A30067A7C8 /* ChatService.swift in Sources */,
 				F5720A0A29A9FDCF002001C5 /* CustomButton.swift in Sources */,
-				F59E2BAF29B23FBF00BE4C2E /* DialogViewController.swift in Sources */,
+				F59E2BAF29B23FBF00BE4C2E /* CertainChatViewController.swift in Sources */,
 				F55EC1AF29A900450095B234 /* AppDelegate.swift in Sources */,
 				F52F52FE29B5A49E0077D92A /* AuthService.swift in Sources */,
 				F5C6EA7229A94D4400BED6DB /* CustomTextField.swift in Sources */,
@@ -366,7 +370,7 @@
 				F51A9F6129AFE62300DE65D0 /* UserLastMessageView.swift in Sources */,
 				F52F52FB29B5921F0077D92A /* CheckField.swift in Sources */,
 				F52D7C0C29B79C9900D84C44 /* FriendsListViewController.swift in Sources */,
-				F55EC1CA29A901430095B234 /* MainVC.swift in Sources */,
+				F55EC1CA29A901430095B234 /* ChatsViewController.swift in Sources */,
 				F55EC1CF29A903BC0095B234 /* HeaderView.swift in Sources */,
 				F51A9F5F29AFDDA000DE65D0 /* ExtendedTableViewCell.swift in Sources */,
 				F52F530329B5C7F40077D92A /* AuthUserEntity.swift in Sources */,

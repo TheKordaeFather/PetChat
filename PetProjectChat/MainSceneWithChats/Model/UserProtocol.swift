@@ -12,6 +12,7 @@ protocol UserProtocol {
     var name:String { get set }
     var nickName:String { get set }
     var email:String { get set }
+    var id:String { get set }
     var password:String { get set }
     var userpic:UIImage { get set }
     var lastMessage:String { get set }
