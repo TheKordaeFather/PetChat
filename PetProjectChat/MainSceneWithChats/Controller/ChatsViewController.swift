@@ -9,14 +9,16 @@ import UIKit
 
 class ChatsViewController: UIViewController {
     private let cellIdentifire = "cellID"
-    public var userStorage = UserStorage()
+    let yourProfileUser = YourProfileUser.shared
+        
+    var userStorage:[UserProtocol] = []
     var searchStorage:[UserProtocol] = []
     // MARK: all images
     
     let searchBar = UISearchBar()
     
     //аватарка с картинкой своего профиля
-    let button:UIButton = {
+    let yourProfileSegue:UIButton = {
         let b = UIButton()
         b.setTitle("", for: .normal)
         b.layer.masksToBounds = true
@@ -41,7 +43,7 @@ class ChatsViewController: UIViewController {
     //обертка для группировки friendsDialogsSegmentControl и dialogsTableView
     var backgroundView:UIView! //tableViewAndSegmentControlWrapper
     
-    private let dialogsTableView:UITableView = {
+    let dialogsTableView:UITableView = {
         let tv = UITableView()
         tv.allowsSelection = true
         tv.backgroundColor = .systemBackground
@@ -52,6 +54,10 @@ class ChatsViewController: UIViewController {
    
     override func viewDidAppear(_ animated: Bool) {
         friendsDialogsSegmentControl.selectedSegmentIndex = 0
+        yourProfileSegue.setBackgroundImage(UIImage(named: yourProfileUser.nickName), for: .normal)
+        
+        self.dialogsTableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -63,13 +69,18 @@ class ChatsViewController: UIViewController {
         searchBar.delegate = self
         
         setupUI()
+        
+        userStorage = YourProfileUser.shared.friendList        
+        
     }
     
     //переход на свой профиль
-    @objc func buttonDidTap() {
+    @objc func yourProfileButtonDidTap() {
 //        let vc = CertainChatViewController()
 //        navigationController?.pushViewController(vc, animated: true)
-        self.dialogsTableView.reloadData()
+//        self.dialogsTableView.reloadData()
+        let vc = YourProfileViewController()
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     
@@ -104,8 +115,10 @@ class ChatsViewController: UIViewController {
     func configureNavigationBar(){
 
         navigationItem.titleView = searchBar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: yourProfileSegue)
+        yourProfileSegue.addTarget(self, action: #selector(yourProfileButtonDidTap), for: .touchUpInside)
+        
+        
 
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchDidTap))
 //        searchBar.sizeToFit()
@@ -136,11 +149,7 @@ class ChatsViewController: UIViewController {
             dialogsTableView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             dialogsTableView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor),
             ])
-        
     }
-    
-    
-    
 }
 
 extension ChatsViewController:UISearchBarDelegate {
@@ -148,13 +157,13 @@ extension ChatsViewController:UISearchBarDelegate {
         self.searchStorage.removeAll()
         
         guard searchText != "" || searchText != " " else {
-            searchStorage = userStorage.list
+            searchStorage = userStorage
             return
         }
         
         let text = searchText.lowercased()
         
-        for user in userStorage.list {
+        for user in userStorage {
             let isArrayContain = user.name.lowercased().range(of: text)
             if isArrayContain != nil {
                 searchStorage.append(user)
@@ -175,7 +184,7 @@ extension ChatsViewController:UITableViewDataSource, UITableViewDelegate {
         if searchStorage.count > 0 {
             return searchStorage.count
         } else {
-            return userStorage.list.count
+            return userStorage.count
         }
     }
     
@@ -192,11 +201,10 @@ extension ChatsViewController:UITableViewDataSource, UITableViewDelegate {
         if searchStorage.count > 0 {
             user = searchStorage[indexPath.row]
         } else {
-            user = userStorage.list[indexPath.row]
+            user = userStorage[indexPath.row]            
         }
-        
-        
-        cell.configure(user: user)
+                        
+        cell.configure(user: user, index: indexPath.row)
         
         return cell
     }
@@ -206,13 +214,14 @@ extension ChatsViewController:UITableViewDataSource, UITableViewDelegate {
         
         let vc = CertainChatViewController()
         if searchStorage.count > 0 {
-            vc.user = searchStorage[indexPath.row]
+            vc.companion = searchStorage[indexPath.row]
         } else {
-            vc.user = userStorage.list[indexPath.row]
+            vc.companion = userStorage[indexPath.row]
+           
         }
         
         
-        vc.otherSideId = vc.user?.id
+//        vc.otherSideId = vc.user?.id
     
         navigationController?.pushViewController(vc, animated: true)
     }

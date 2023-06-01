@@ -68,64 +68,62 @@ class AuthService {
         }
     }
     
-    func getAllUsers(completion: @escaping ([String]) -> ()){
-        Firestore.firestore().collection("users").getDocuments { snap, err in
-            
-            guard err == nil else {
-                return
-            }
-            
-            //все id пользователей
-            guard let docs = snap?.documents else {
-                return
-            }
-            //нужно создать какой нибудь адекватный класс где будут хранить эту имя возраст картинку и тд
-            
-            var tempList:[String] = []
-            for doc in docs {
-                let data = doc.data()
-                let email = data["email"] as! String
+    
+    //MARK: -- YourProfile data
+   
+    func getYourProfileData(){
+        let yourProfileUser = YourProfileUser.shared
+        let db = Firestore.firestore()
+        
+        //добавляем инфу об емайле
+        yourProfileUser.email = Auth.auth().currentUser?.email ?? "no email???"
+        
+        guard let yourId = Auth.auth().currentUser?.uid else {
+            print("не авторизован")
+            return
+        }
+        //добавляем инфу id
+        yourProfileUser.id = yourId       
+        
+        let docRef = db.collection("users").document(yourId)
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                let dataDescription = document.data()
+                //добавляем инфу никнейм
+                let nickname = dataDescription?["nickname"] as! String
+                yourProfileUser.nickName = nickname
+                yourProfileUser.userpic = UIImage(named: nickname) ?? UIImage(systemName: "questionmark")!
                 
-                tempList.append(email)
-            }
-            completion(tempList)
-            
-        }
-    }
-    
-    //MARK: -- Messenger
-    func sendMessage(otherSideId:String?, conversationId:String?, message: Message, text:String, completion: @escaping (Bool) -> () ){
-        if conversationId == nil {
-            //создаем новую переписку
-        } else {
-            let msg:[String:Any] = [
-                "date":Date(),
-                "sender_id":message.sender.senderId,
-                "text":text
-            ]
-            Firestore.firestore().collection("conversations").document(conversationId!).collection("messages").addDocument(data:  msg) { err in
-                if err == nil {
-                    completion(true)
                 } else {
-                    completion(false)
+                    print("Document does not exist")
                 }
+        }
+
+        
+       
+        
+        
+    }
+    
+    func setYourProfileData(){
+        let yourProfileUser = YourProfileUser.shared
+        let db = Firestore.firestore()
+        
+        guard let yourId = Auth.auth().currentUser?.uid else {
+            print("не авторизован")
+            return
+        }
+        
+        
+        db.collection("users").document(yourId).updateData(["nickname" : yourProfileUser.nickName]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
             }
         }
     }
     
-    func updateConversation(){
-        
-    }
     
-    func getConversationId(){
-        
-    }
-    
-    func getAllMessages(){
-        
-    }
-    
-    func getOneMessage(){
-        
-    }
 }

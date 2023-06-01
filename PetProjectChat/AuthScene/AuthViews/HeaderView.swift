@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import AVFoundation
 
+
+//MARK: custom view that contains UIImageView for logo image and a label for a title
 class HeaderView: UIView {
-
+    let widthConstraint:CGFloat = 100
+    let heightConstraint:CGFloat = 100
+    
      var logoImageView = UIImageView()
      var titleLabel = UILabel()
     
     init(){
         super.init(frame: .zero)
-        configure()
+        configureUI()
         setupUI()
     }
     
@@ -22,23 +27,33 @@ class HeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(){
-        logoImageView = UIImageView()
+    private func configureUI(){
+        configurateSelf()
+        configureLogoImageView()
+        configureTitleLabel()
+    }
+    
+    private func configureLogoImageView(){
         logoImageView.contentMode = .scaleAspectFit
+        logoImageView.layer.cornerRadius = widthConstraint / 2
+        logoImageView.clipsToBounds = true
         logoImageView.image = UIImage(named: "logo")
         
-        titleLabel = UILabel()
+    }
+    
+    private func configureTitleLabel(){
         titleLabel.textColor = .label
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleLabel.text = "Talky"
-                
     }
     
+    private func configurateSelf(){
+        self.backgroundColor = .systemCyan
+        self.layer.cornerRadius = 15
+    }
     
     private func setupUI() {
-        self.backgroundColor = .systemCyan
-        
         self.addSubview(logoImageView)
         self.addSubview(titleLabel)
         
@@ -47,8 +62,8 @@ class HeaderView: UIView {
         
         
         NSLayoutConstraint.activate([//
-            logoImageView.widthAnchor.constraint(equalToConstant: 100),
-            logoImageView.heightAnchor.constraint(equalToConstant: 100),
+            logoImageView.widthAnchor.constraint(equalToConstant: widthConstraint),
+            logoImageView.heightAnchor.constraint(equalToConstant: heightConstraint),
             logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             

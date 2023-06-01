@@ -8,7 +8,7 @@
 import UIKit
 
 class FriendsListViewController: UIViewController {
-    var userStorage = UserStorage()
+    var userStorage:[UserProtocol] = []
     
     private let friendsTableView:UITableView = {
         let tv = UITableView()
@@ -52,7 +52,7 @@ extension FriendsListViewController:UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userStorage.list.count
+        return userStorage.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,7 +63,7 @@ extension FriendsListViewController:UITableViewDataSource, UITableViewDelegate {
         guard let cell = friendsTableView.dequeueReusableCell(withIdentifier: TempTableViewCell.cellIdentifier, for: indexPath) as? TempTableViewCell else {
             fatalError("The tableview could not dequene customcell in viewcontrolelr")
         }
-        let user = userStorage.list[indexPath.row]        
+        let user = userStorage[indexPath.row]
         cell.configure(user: user)
         
         
@@ -73,10 +73,7 @@ extension FriendsListViewController:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = CertainChatViewController()
-        vc.user = userStorage.list[indexPath.row]
-    
-        navigationController?.pushViewController(vc, animated: true)
+       
     }
     
     

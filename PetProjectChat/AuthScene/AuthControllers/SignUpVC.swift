@@ -16,8 +16,7 @@ class SignUpVC: UIViewController {
     
     
     let headerView:HeaderView = {
-       let view = HeaderView()
-        view.layer.cornerRadius = 12
+       let view = HeaderView()        
         view.backgroundColor = .systemCyan
         view.titleLabel.text = "Sign up"        
         return view

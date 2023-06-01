@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class ExtendedTableViewCell: UITableViewCell {
 
     static let cellIdentifier = "CustomCell"
+    let chatService = ChatService.shared
     
     let userpicImageView:UIImageView = {
         let iv = UIImageView()
@@ -36,15 +39,42 @@ class ExtendedTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(user:UserProtocol){
+    func configure(user:UserProtocol, index:Int){
+       
         userpicImageView.image = user.userpic
-        userLastMessageView.nameAndLastnameLabel.text = user.email
-        userLastMessageView.lastMessageLabel.text = user.lastMessage
+        userLastMessageView.nameAndLastnameLabel.text = user.email        
+                        
+        getUserLastMessage(otherUser: user) { [self] lastMessage in
+            
+            userLastMessageView.lastMessageLabel.text = lastMessage
+        }
+        
         userLastMessageView.dateLabel.text = user.lastMessageDate
         
     }
     
-    
+    func getUserLastMessage(otherUser:UserProtocol, completion: @escaping (String) -> ()) {
+        
+        let yourProfileUser = YourProfileUser.shared
+        var lastMessage = "last message"
+        chatService.getConversationId(otherId: otherUser.id) { convoId in
+        
+            let db = Firestore.firestore()
+            let docRef = db.collection("conversations").document(convoId)
+            docRef.getDocument { document, error in
+                if let document = document, document.exists {
+                    let dataDescription = document.data()
+                    lastMessage = dataDescription?["lastMessage"] as! String
+                    completion(lastMessage)
+                } else {
+                        print("Document does not exist")
+                        
+                }
+            }
+        }
+        
+        
+    }
     
     
     private func setupUI() {
@@ -57,8 +87,6 @@ class ExtendedTableViewCell: UITableViewCell {
             userpicImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor),
             userpicImageView.bottomAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.bottomAnchor),
             userpicImageView.leadingAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.leadingAnchor),
-            
-//            myImageView.heightAnchor.constraint(equalToConstant: 90),
             userpicImageView.widthAnchor.constraint(equalToConstant: 80),
             
             userLastMessageView.leadingAnchor.constraint(equalTo: userpicImageView.trailingAnchor, constant: 16),

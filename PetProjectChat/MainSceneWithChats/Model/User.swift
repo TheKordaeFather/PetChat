@@ -10,29 +10,29 @@ import UIKit
 
 
 class User : UserProtocol{
-    var name:String
-    var nickName:String = ""
-    var email:String = ""
-    var id:String = ""
+    var name:String = ""
+    var nickName:String
+    var email:String = "" //добавляется
+    var id:String = "" //добавляется
     var password:String = ""
     var lastMessage:String = ""
     var lastMessageDate:String = ""
     var userpic:UIImage
     
-    init(name:String, userpic:UIImage) {
-        self.name = name
+    init(nickName:String, userpic:UIImage) {
+        self.nickName = nickName
         self.userpic = userpic
     }
     
-    init(name:String, userpic:UIImage, lastMessage:String, lastMessageDate:String) {
-        self.name = name
+    init(nickName:String, userpic:UIImage, lastMessage:String, lastMessageDate:String) {
+        self.nickName = nickName
         self.userpic = userpic
         self.lastMessage = lastMessage
         self.lastMessageDate = lastMessageDate
     }
     
-    init(name:String, userpic:UIImage, email:String, id:String) {
-        self.name = name
+    init(nickName:String, userpic:UIImage, email:String, id:String) {
+        self.nickName = nickName
         self.userpic = userpic
         self.email = email
         self.id = id
