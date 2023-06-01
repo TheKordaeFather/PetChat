@@ -11,7 +11,7 @@ class UserLastMessageView: UIView {
 
     let nameAndLastnameLabel:UILabel = {
         let label = UILabel()
-        label.text = "Андрей Кордюков"
+        label.text = ""
         label.textColor = .black
         label.font = .systemFont(ofSize: 18, weight: .medium)
         return label
@@ -19,7 +19,7 @@ class UserLastMessageView: UIView {
     
     let dateLabel:UILabel = {
         let label = UILabel()
-        label.text = "28.02.2022"
+        label.text = ""
         label.textColor = .black
         label.font = .systemFont(ofSize: 12, weight: .light)
         return label
@@ -27,7 +27,7 @@ class UserLastMessageView: UIView {
     
     let lastMessageLabel:UILabel = {
         let label = UILabel()
-        label.text = "Привет как дела, го вечером в доту"        
+        label.text = ""        
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .light)
         return label

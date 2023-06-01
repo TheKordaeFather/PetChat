@@ -9,16 +9,22 @@ import UIKit
 
 class AuthVC: UIViewController {
     
-    let headerView: HeaderView = {
-        let view = HeaderView()
-        view.layer.cornerRadius = 12
-        view.backgroundColor = .systemCyan
-        return view
-    }()
-    
+    let headerView = HeaderView()
     
     let adminButton = CustomButton(buttonSize: .small, title: "adminEnter")
     let registrationButton = CustomButton(buttonSize: .small, title: "Registration")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        
+        self.signInTextView.delegate = self
+        
+        registrationButton.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
+        adminButton.addTarget(self, action: #selector(didTapAdminButton), for: .touchUpInside)
+       
+        
+    }
     
     let orLabel:UILabel = {
         let label = UILabel()
@@ -49,18 +55,6 @@ class AuthVC: UIViewController {
         tv.isScrollEnabled = false
         return tv
     }()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        
-        self.signInTextView.delegate = self
-        registrationButton.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
-        adminButton.addTarget(self, action: #selector(didTapAdminButton), for: .touchUpInside)
-       
-        
-    }
     
     
     private func setupUI() {
@@ -116,10 +110,20 @@ class AuthVC: UIViewController {
     
 
     @objc func didTapAdminButton() {
-        let vc = MainVC()
+        let vc = ChatsViewController()
+                        
+       
+        ChatService.shared.getAllUsers(completion: { list in
+            
+            YourProfileUser.shared.friendList = list            
+            AuthService.shared.getYourProfileData()
+                        
+            self.navigationController?.viewControllers[0] = vc
+            self.navigationController?.popToRootViewController(animated: true)
+            
+        })
+                                
         
-        navigationController?.viewControllers[0] = vc
-        navigationController?.popToRootViewController(animated: true)
     }
     
 

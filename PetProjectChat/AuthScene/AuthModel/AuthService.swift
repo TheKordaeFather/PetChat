@@ -69,4 +69,61 @@ class AuthService {
     }
     
     
+    //MARK: -- YourProfile data
+   
+    func getYourProfileData(){
+        let yourProfileUser = YourProfileUser.shared
+        let db = Firestore.firestore()
+        
+        //добавляем инфу об емайле
+        yourProfileUser.email = Auth.auth().currentUser?.email ?? "no email???"
+        
+        guard let yourId = Auth.auth().currentUser?.uid else {
+            print("не авторизован")
+            return
+        }
+        //добавляем инфу id
+        yourProfileUser.id = yourId       
+        
+        let docRef = db.collection("users").document(yourId)
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                let dataDescription = document.data()
+                //добавляем инфу никнейм
+                let nickname = dataDescription?["nickname"] as! String
+                yourProfileUser.nickName = nickname
+                yourProfileUser.userpic = UIImage(named: nickname) ?? UIImage(systemName: "questionmark")!
+                
+                } else {
+                    print("Document does not exist")
+                }
+        }
+
+        
+       
+        
+        
+    }
+    
+    func setYourProfileData(){
+        let yourProfileUser = YourProfileUser.shared
+        let db = Firestore.firestore()
+        
+        guard let yourId = Auth.auth().currentUser?.uid else {
+            print("не авторизован")
+            return
+        }
+        
+        
+        db.collection("users").document(yourId).updateData(["nickname" : yourProfileUser.nickName]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    
 }

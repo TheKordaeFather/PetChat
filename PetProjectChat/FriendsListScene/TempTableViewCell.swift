@@ -25,13 +25,13 @@ class TempTableViewCell: UITableViewCell {
         return iv
     }()
     
-//    let nameAndLastnameLabel:UILabel = {
-//        let label = UILabel()
-//        label.text = "Имя фамилия"
-//        label.textColor = .black
-//        label.font = .systemFont(ofSize: 18, weight: .medium)
-//        return label
-//    }()
+    let nameAndLastnameLabel:UILabel = {
+        let label = UILabel()
+        label.text = "Имя фамилия"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 18, weight: .medium)
+        return label
+    }()
 //
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
@@ -44,13 +44,15 @@ class TempTableViewCell: UITableViewCell {
     }
     
     func configure(user:UserProtocol){
-        userpicImageView.image = user.userpic
+        userpicImageView.image = user.userpic        
+        nameAndLastnameLabel.text = user.email
     }
     
     private func setupUI() {
         self.contentView.addSubview(userpicImageView)
+        self.contentView.addSubview(nameAndLastnameLabel)
         userpicImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+        nameAndLastnameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             userpicImageView.topAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.topAnchor),
@@ -59,13 +61,12 @@ class TempTableViewCell: UITableViewCell {
 //            myImageView.heightAnchor.constraint(equalToConstant: 90),
             userpicImageView.widthAnchor.constraint(equalToConstant: 80),
             
-//            nameAndLastnameLabel.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-//            nameAndLastnameLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-//            nameAndLastnameLabel.heightAnchor.constraint(equalToConstant: 35),
-//            nameAndLastnameLabel.widthAnchor.constraint(equalToConstant: 200),
+            nameAndLastnameLabel.leadingAnchor.constraint(equalTo: userpicImageView.trailingAnchor, constant: 16),
+            nameAndLastnameLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
+            nameAndLastnameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            nameAndLastnameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ])
-        
-        
+                
     }
 
 }
